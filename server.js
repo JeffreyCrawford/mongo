@@ -29,8 +29,3 @@ require("./app/routes/api-routes")(app);
 require("./app/routes/html-routes")(app);
 
 //
-var PORT = 3000;
-
-app.listen(PORT, function() {
-    console.log(`App running on port ${PORT}`)
-});
