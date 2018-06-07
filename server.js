@@ -26,7 +26,7 @@ mongoose.connect(MONGODB_URI);
 
 
 require("./app/routes/api-routes")(app);
-
+require("./app/routes/html-routes")(app);
 
 //
 var PORT = 3000;

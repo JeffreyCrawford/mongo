@@ -58,4 +58,15 @@ module.exports = function(app) {
         })
     })
 
+    app.get("/api/comments", function(req, res) {
+        db.comments.find({}, function(error, found) {
+            if (error) {
+                console.log(error)
+            }
+            else {
+                res.json(found)
+            }
+        })
+    })
+
 }
