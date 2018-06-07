@@ -47,7 +47,7 @@ module.exports = function(app) {
         });
     });
 
-    app.get("/all", function(req, res) {
+    app.get("/api/articles", function(req, res) {
         db.articles.find({}, function(error, found) {
             if (error) {
                 console.log(error)
