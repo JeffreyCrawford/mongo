@@ -5,10 +5,14 @@ var Schema = mongoose.Schema;
 var ArticleSchema = new Schema({
     flytitle: String,
     title: {
-        type: String
+        type: String,
+        unique: true
     },
     summary: String,
-    url: String,
+    url: {
+        type: String,
+        unique: true
+    },
     comments: [
         {
             type: Schema.Types.ObjectId,
