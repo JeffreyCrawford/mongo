@@ -9,7 +9,7 @@ const NewspaperSchema = new Schema({
     },
     articles: [
         {
-            type: Schema.Types.ObjetId,
+            type: Schema.Types.ObjectId,
             ref: "Article"
         }
     ]

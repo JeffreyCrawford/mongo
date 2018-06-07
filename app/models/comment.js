@@ -4,10 +4,10 @@ const Schema = mongoose.Schema;
 
 const CommentSchema = new Schema({
     name: String,
-    comment: Text,
-    date: date.now
+    comment: String,
+    date: String
 });
 
-const Comment = mongoose.model("Comment", ArticleSchema);
+const Comment = mongoose.model("Comment", CommentSchema);
 
 module.exports = Comment;

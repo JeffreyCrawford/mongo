@@ -4,6 +4,8 @@ const cheerio = require("cheerio");
 const request = require("request");
 const mongoose = require("mongoose");
 
+const db = require("./app/models")
+
 const app = express();
 
 app.use(bodyParser.urlencoded({ extended: true }));
