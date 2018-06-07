@@ -58,6 +58,17 @@ module.exports = function(app) {
         })
     })
 
+    app.get("/article/:id", function(req, res) {
+        db.articles.findOne({_id: mongojs.ObjectId(req.params.id)}, function(error, found) {
+            if (error) {
+                console.log(error)
+            }
+            else {
+                res.json(found)
+            }
+        })
+    })
+
     app.get("/api/comments", function(req, res) {
         db.comments.find({}, function(error, found) {
             if (error) {
@@ -68,5 +79,7 @@ module.exports = function(app) {
             }
         })
     })
+
+
 
 }

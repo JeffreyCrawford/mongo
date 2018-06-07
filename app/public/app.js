@@ -1,7 +1,5 @@
 $.getJSON("/api/articles", function(data) {
-    // For each one
     for (var i = 0; i < data.length; i++) {
-      // Display the apropos information on the page
       $(".articles").append(
         "<div class='card'>" +
             "<div class='card-header'>" +
@@ -10,10 +8,40 @@ $.getJSON("/api/articles", function(data) {
             "<div class='card-body'>" +
                 "<h5 class='card-title'>" + data[i].title + "</h5>" +
                 "<p class='card-text'>" + data[i].summary + "</p>" +
-                "<a href=" + data[i].url + "class=" + 'btn btn-primary' + ">" + "Read More" + "</a>" +
+                "<a href=" + data[i].url + " class='btn btn-dark btn'>" + 'Read More' + "</a>" +
+                "<a href=" + '/article/comment/' + data[i]._id + " class='btn btn-secondary btn-note'>" + 'Make a Note' + "</a>" +
             "</div>" +
         "</div>" + 
         "<br>"
       );
     }
   });
+
+$.getJSON("/api/articles/:id", function(data) {
+for (var i = 0; i < data.length; i++) {
+    $(".article").append(
+    "<div class='card'>" +
+        "<div class='card-header'>" +
+            data[i].flytitle +
+        "</div>" +
+        "<div class='card-body'>" +
+            "<h5 class='card-title'>" + data[i].title + "</h5>" +
+            "<p class='card-text'>" + data[i].summary + "</p>" +
+            "<a href=" + data[i].url + " class='btn btn-dark btn'>" + 'Read More' + "</a>" +
+            "<a href=" + data[i].url + " class='btn btn-secondary btn-note'>" + 'Make a Note' + "</a>" +
+            "<a href=" + '/article/comment/' + data[i]._id + " class='btn btn-secondary btn-save'>" + 'Save this Article' + "</a>" +
+        "</div>" +
+    "</div>" + 
+    "<br>"
+    );
+}
+});
+
+$(document).on("click", "btn-comment", function() {
+    var thisId = $(this).parent().attr("data-id");
+
+    $.ajax({
+      method: "GET",
+      url: "/articles/" + thisId
+    })
+})
