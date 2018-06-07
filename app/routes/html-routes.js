@@ -9,7 +9,8 @@ module.exports = function(app) {
         res.sendFile(path.join(__dirname, "../public/articles.html"))
     })
 
-    app.get("/article/comment/:id", function(req, res) {
+    app.get("/articles/:id", function(req, res) {
+        
         res.sendFile(path.join(__dirname, "../public/comment.html"))
 
     })

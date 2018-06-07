@@ -9,7 +9,7 @@ $.getJSON("/api/articles", function(data) {
                 "<h5 class='card-title'>" + data[i].title + "</h5>" +
                 "<p class='card-text'>" + data[i].summary + "</p>" +
                 "<a href=" + data[i].url + " class='btn btn-dark btn'>" + 'Read More' + "</a>" +
-                "<a href=" + '/article/comment/' + data[i]._id + " class='btn btn-secondary btn-note'>" + 'Make a Note' + "</a>" +
+                "<a href=" + '/article/' + data[i]._id + " class='btn btn-secondary btn-note'>" + 'Make a Note' + "</a>" +
             "</div>" +
         "</div>" + 
         "<br>"
@@ -17,7 +17,7 @@ $.getJSON("/api/articles", function(data) {
     }
   });
 
-$.getJSON("/api/articles/:id", function(data) {
+$.getJSON("/article/:id", function(data) {
 for (var i = 0; i < data.length; i++) {
     $(".article").append(
     "<div class='card'>" +
@@ -29,7 +29,7 @@ for (var i = 0; i < data.length; i++) {
             "<p class='card-text'>" + data[i].summary + "</p>" +
             "<a href=" + data[i].url + " class='btn btn-dark btn'>" + 'Read More' + "</a>" +
             "<a href=" + data[i].url + " class='btn btn-secondary btn-note'>" + 'Make a Note' + "</a>" +
-            "<a href=" + '/article/comment/' + data[i]._id + " class='btn btn-secondary btn-save'>" + 'Save this Article' + "</a>" +
+            "<a href=" + '/article/' + data[i]._id + " class='btn btn-secondary btn-save'>" + 'Save this Article' + "</a>" +
         "</div>" +
     "</div>" + 
     "<br>"
@@ -37,11 +37,11 @@ for (var i = 0; i < data.length; i++) {
 }
 });
 
-$(document).on("click", "btn-comment", function() {
+$(document).on("click", "btn-note", function() {
     var thisId = $(this).parent().attr("data-id");
 
     $.ajax({
       method: "GET",
-      url: "/articles/" + thisId
+      url: "/article/" + thisId
     })
 })
